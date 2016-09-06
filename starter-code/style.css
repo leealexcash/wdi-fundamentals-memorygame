@@ -26,9 +26,9 @@ h1, h2 {
 	width: 150px;
 	border-radius: 10px;
 	border: 1px black solid;
-	/**display: inline-block;
+	display: inline-block;
 	margin: 8%;
-	float: left;**/
+	float: left;
 }
 footer {
 	clear: both;
