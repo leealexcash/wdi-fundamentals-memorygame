@@ -11,17 +11,52 @@ var cardFour = "king";
 	alert("Sorry, try again");
 }; */
 
-var createBoard = function() {
-  
-  	var gameBoard = document.getElementById('game-board');
+// represents the cards of the game
+var cards = ['queen', 'queen', 'king', 'king'];
 
- for (i=0; i<4; i++) {
- 	var newCard = document.createElement('div');
- 	newCard.className = 'card';
- 	gameBoard.appendChild(newCard);
-   
- }
+// represents the cards in play
+var cardsInPlay = [];
 
- }
- 
- createBoard();
+
+
+var board = document.getElementById('game-board');
+function createBoard() {
+  for (var i=0; i<cards.length; i++) {
+    var cardElement = document.createElement('div');
+    cardElement.className = 'card';
+    cardElement.setAttribute('data-card', cards[i]);
+    cardElement.addEventListener('click', isTwoCards);
+    board.appendChild(cardElement);
+  }
+
+}
+function isTwoCards() {
+  cardsInPlay.push(this.getAttribute('data-card'));
+	console.log(this.getAttribute('data-card'));
+	if (this.getAttribute('data-card') === 'king') {
+		this.innerHTML = "<img src='http://i.imgur.com/bnuv5Im.png'>"; // king
+	} else {
+		this.innerHTML = "<img src='http://i.imgur.com/v6buNt2.png'>"; //queen
+	}
+  if (cardsInPlay.length === 2) {
+    isMatch(cardsInPlay);
+    cardsInPlay = [];
+  }
+}
+
+createBoard();
+
+ function isMatch(cards) {
+    if (cards[0] === cards[1]) {
+      document.getElementById('content').textContent = "You found a match! Press any key to play again";
+                                }
+      else {
+         document.getElementById('content').textContent = "Sorry. Try again by pressing any key.";
+            }
+                               };
+
+         var refreshBoard = function() {
+                location.reload();
+         }
+
+         document.addEventListener('keydown', refreshBoard);

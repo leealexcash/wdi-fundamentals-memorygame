@@ -60,3 +60,16 @@ a:hover {
 	clear: both;
 	height: 0;
 }
+img {
+	height: 200px;
+  width: 150px;
+}
+.announcement {
+	margin: auto;
+	width: 50%;
+	clear: both;
+	background-color: yellow;
+	color: rgb(2, 132, 130);
+	text-align: center;
+	padding: 20px;
+}
